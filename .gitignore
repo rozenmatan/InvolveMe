@@ -38,6 +38,7 @@ target/
 test-output/*
 allure-results/*
 allure-report/*
+ScreenShots/
 video/*
 .allure
 
