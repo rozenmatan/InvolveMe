@@ -12,19 +12,19 @@ public class Template extends BasePage{
 	protected WebElement moveToNextQuestionButton;
 	@FindBy(css=".btn.btn-secondary.save-btn")
 	protected WebElement firstPublishButton;
-	@FindBy(css="#publish")
+	@FindBy(css=".relative.h-10")
 	protected WebElement secondPublishButton; 
-	@FindBy(css=".swal-button.swal-button--confirm")
+	@FindBy(css=".bg-gray-300.overflow-hidden")
 	protected WebElement publishNowButton;
-	@FindBy(css=".nav-item>.nav-link")
+	@FindBy(css=".p-4.block")
 	protected List<WebElement> topMenu;
-	@FindBy(css=".project-title")
+	@FindBy(css=".leading-tight.text-lg.font-medium>a")
 	protected List <WebElement> projectsList;
 	@FindBy(css=".c-button-group-button.e-use-template.float-right")
 	protected WebElement useThisTemplate;
 	@FindBy(css=".swal-button")
 	protected WebElement startEditing;
-	@FindBy(css=".dropdown-item.project-delete")
+	@FindBy(css=".justify-right>.dropdown.relative .pl-4.pr-4.w-full")
 	protected WebElement deleteProject;
 	@FindBy(css=".swal-button.swal-button--danger")
 	protected WebElement confirmDeletion;

@@ -8,12 +8,14 @@ import org.openqa.selenium.support.FindBy;
 
 public class deleteAllFromsPage extends Template{
 	
-	@FindBy(css="[aria-haspopup='true'].btn.btn-primary")
+	@FindBy(css=".justify-right>.dropdown.relative")
 	private List <WebElement> FormsdropDownArrow;
-	@FindBy(css=".swal-button--confirm")
+	@FindBy(css="#confirm-delete-button")
 	private WebElement confirmDeletionButton;
 	@FindBy(css=".swal-icon--success__ring")
 	private WebElement deletionSuccess;
+	@FindBy(css=".px-5.flex.justify-between.text-base>span:nth-child(2)")
+	private WebElement numberOfFormsInTotal;
 	
 	
 	public deleteAllFromsPage(WebDriver driver) {
@@ -23,13 +25,14 @@ public class deleteAllFromsPage extends Template{
 	
 	public void deleteAllFroms() {
 		
-		while(FormsdropDownArrow.size()>0) {
+		while(Integer.parseInt(numberOfFormsInTotal.getText())>0) {
 			
+			System.out.println("Size: "+numberOfFormsInTotal.getText());
 			click(FormsdropDownArrow.get(0));
 			click(deleteProject);
 			click(confirmDeletionButton);
-			waitForElementToBeVisible(deletionSuccess);
-			click(confirmDeletionButton);
+			int numbersOfFormsThatLeftToDelete = Integer.parseInt(numberOfFormsInTotal.getText());
+			waitForTextToBePresentOnElement(numberOfFormsInTotal, String.valueOf(numbersOfFormsThatLeftToDelete-1));
 			
 			
 		}

@@ -47,6 +47,17 @@ public abstract class BasePage {
 		wait.until(ExpectedConditions.visibilityOf(el));
 		writeToLog("<<<<waitForElementToBeVisible");
 	}
+	protected void waitForTextToBePresentOnElement(final WebElement el,final String txt) {
+		writeToLog(">>>>waitForTextToBePresentOnElement");
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		wait.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver d) {
+				writeToLog("<<<<waitForTextToBePresentOnElement");
+				return el.getText().equals(txt);
+			}
+		});
+		
+	}
 	protected void waitForElementToBeClickable(WebElement el) {//the method wait until element will be clickable
 		writeToLog(">>>>waitForElementToBeClickable");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
