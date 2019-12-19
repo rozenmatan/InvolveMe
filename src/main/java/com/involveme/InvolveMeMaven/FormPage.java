@@ -1,0 +1,69 @@
+package com.involveme.InvolveMeMaven;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class FormPage extends Template{
+
+	@FindBy(css="#filter-form")
+	private WebElement filterSurvey;
+	@FindBy(css="[alt='Contact Form']")
+	private WebElement contactForm;
+	@FindBy(css="[placeholder='First Name*']")
+	private WebElement firstNameInput;
+	@FindBy(css="[placeholder='Email*']")
+	private WebElement emailInput;
+	@FindBy(css="[placeholder='Phone']")
+	private WebElement phoneInput;
+	@FindBy(css="[placeholder='What do you need help with?*']")
+	private WebElement needHelpDropDown;
+	@FindBy(css="[placeholder='How did you hear about us?*']")
+	private WebElement hearAboutUsDropDown;
+	@FindBy(css=".el-select-dropdown__item")
+	private List <WebElement> dropDownList;
+	@FindBy(css=".el-input__suffix>.el-input__suffix-inner")
+	private List <WebElement> dropDownArrows;
+	@FindBy(css=".e-freetxt-answer")
+	private WebElement messegeTextArea;
+	@FindBy(css=".el-checkbox__input>.el-checkbox__inner")
+	private List <WebElement> checkBoxs;
+	@FindBy(css=".el-input__icon.is-reverse")
+	private WebElement dropDownIsOpen;
+	
+	
+	public FormPage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void createContractForm() {//the method create new form in order to check it on the next step
+		click(filterSurvey);
+		click(contactForm);
+		editAndPublish();
+	}
+	
+	public void checkContractForm(String name, String email, String phone, String firstDropDownValue, String secondDropDownValue, String textAreaValue ) {//the method checks the form that created by the previous method
+		
+		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
+		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
+		waitForElementToBeFixAtLocation(moveToNextQuestionButton);
+		type(firstNameInput, name);
+		type(emailInput, email);
+		type(phoneInput, phone);
+		click(needHelpDropDown);
+		click(dropDownArrows.get(0));
+		waitForElementToBeVisible(dropDownIsOpen);
+		click(hearAboutUsDropDown);
+		click(dropDownArrows.get(1));
+		waitForElementToBeVisible(dropDownIsOpen);
+		type(messegeTextArea, textAreaValue);
+		click(checkBoxs.get(1));
+		click(moveToNextQuestionButton);
+		closeCurrentTab();//close the tab that used to check the form
+		switchToWindow(mainMenuHandel);//move the focus back to the main window
+	}
+
+}

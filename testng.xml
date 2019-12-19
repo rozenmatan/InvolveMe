@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes">
+  <test thread-count="5" name="Test" parallel="classes">
+    <classes>
+      <class name="com.involveme.InvolveMeMaven.PaymentFormPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.QuizPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.PromotionPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.LeadPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.PersonallityPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.SurveyPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.LogInPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.CalculatorPageTest"/>
+      <class name="com.involveme.InvolveMeMaven.FormPageTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
