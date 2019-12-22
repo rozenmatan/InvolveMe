@@ -1,9 +1,11 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class SurveryPage extends Template{
 
@@ -26,6 +28,7 @@ public class SurveryPage extends Template{
 		click(employeeSurvery);
 		editAndPublish();
 	}
+	@Step("Survery page details: ")
 	public void checkEmployeeSurvery(String firstAnswer, String secondAnswer) {//the method checks the form that created by the previous method
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

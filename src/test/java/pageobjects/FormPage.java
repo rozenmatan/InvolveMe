@@ -1,10 +1,12 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class FormPage extends Template{
 
@@ -44,7 +46,7 @@ public class FormPage extends Template{
 		click(contactForm);
 		editAndPublish();
 	}
-	
+	@Step("Form details: ")
 	public void checkContractForm(String name, String email, String phone, String firstDropDownValue, String secondDropDownValue, String textAreaValue ) {//the method checks the form that created by the previous method
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle

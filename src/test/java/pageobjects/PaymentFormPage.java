@@ -1,8 +1,10 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class PaymentFormPage extends Template{
 
@@ -28,7 +30,7 @@ public class PaymentFormPage extends Template{
 		click(startEditing);
 		click(saveAndExit);
 	}
-	
+	@Step("Donation form details: ")
 	public void checkOnlineDonationForm(String firstName, String lastName, String donationAmount) {//the method checks the form that created by the previous method
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

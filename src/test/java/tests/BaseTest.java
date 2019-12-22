@@ -1,4 +1,4 @@
-package com.involveme.InvolveMeMaven;
+package tests;
 
 import java.io.File;
 import org.apache.commons.io.FileUtils;
@@ -10,11 +10,15 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
+
+import pageobjects.LoginPage;
+import pageobjects.deleteAllFromsPage;
 
 
 
@@ -24,12 +28,13 @@ public abstract class BaseTest {
 
 	
 	@BeforeClass
-	public void setup() {//initiate the driver and set the URL
+	public void setup(ITestContext testContext) {//initiate the driver and set the URL
 		driver = new ChromeDriver();
 		//driver = new OperaDriver();
 		//driver = new FirefoxDriver();
 		//driver = new SafariDriver();
 		//driver = new EdgeDriver();
+		testContext.setAttribute("WebDriver", this.driver);
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 	}

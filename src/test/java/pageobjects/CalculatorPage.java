@@ -1,8 +1,10 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class CalculatorPage extends Template{
 
@@ -30,15 +32,15 @@ public class CalculatorPage extends Template{
 		click(saveAndExit);
 		
 	}
-	
-	public void checkPersonalLoanCalculator() {//the method checks the form that created by the previous method
+	@Step("loan amount: {0}")
+	public void checkPersonalLoanCalculator(String loanAmount) {//the method checks the form that created by the previous method
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		waitForElementToBeClickable(moveToNextQuestionButton);
 		click(moveToNextQuestionButton);
 		waitForElementToBeFixAtLocation(moveToNextQuestionButton);
-		type(loanAmountInput, "15000");
+		type(loanAmountInput, loanAmount);
 		dragAndDropByXY(loanTerm, 123, 0);//1 year means move X by 41
 		click(moveToNextQuestionButton);
 		waitForElementToBeFixAtLocation(moveToNextQuestionButton);

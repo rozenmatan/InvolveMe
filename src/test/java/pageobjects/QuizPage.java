@@ -1,8 +1,10 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class QuizPage extends Template{
 
@@ -38,6 +40,7 @@ public class QuizPage extends Template{
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
+	@Step("Quiz page details: ")
 	public void checkTechnologyQuiz(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {//the method checks the form that created by the previous method
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

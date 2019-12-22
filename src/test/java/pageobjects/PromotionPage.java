@@ -1,8 +1,10 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class PromotionPage extends Template{
 
@@ -31,7 +33,7 @@ public class PromotionPage extends Template{
 		click(sanFransiscoForm);
 		editAndPublish();
 	}
-	
+	@Step("Promotion page details: ")
 	public void checkWinTripToSanFransisco(String firstName, String lastName, String email) {//the method checks the form that created by the previous method
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

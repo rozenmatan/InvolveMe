@@ -1,8 +1,10 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class LeadPage extends Template{
 
@@ -36,7 +38,7 @@ public class LeadPage extends Template{
 		click(startEditing);
 		click(saveAndExit);
 	}
-	
+	@Step("Lead page details: ")
 	public void checkAgencyLeadGen(String firstAnswer, String secondAnswer, String firstName, String organization, String email, String timeFrame) {//the method checks the form that created by the previous method
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle

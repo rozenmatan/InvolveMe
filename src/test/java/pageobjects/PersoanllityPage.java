@@ -1,10 +1,12 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import io.qameta.allure.Step;
 
 public class PersoanllityPage extends Template{
 
@@ -73,7 +75,7 @@ public class PersoanllityPage extends Template{
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
-	
+	@Step("Personallity page details: ")
 	public void checkWhatAnimalAreYouTest(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer) {//the method checks the form that created by the previous method
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

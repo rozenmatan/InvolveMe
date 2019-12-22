@@ -1,4 +1,4 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import java.awt.AWTException;
 import java.awt.Robot;

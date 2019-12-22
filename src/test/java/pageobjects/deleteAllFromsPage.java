@@ -1,4 +1,4 @@
-package com.involveme.InvolveMeMaven;
+package pageobjects;
 
 import java.util.List;
 
@@ -27,7 +27,6 @@ public class deleteAllFromsPage extends Template{
 		
 		while(Integer.parseInt(numberOfFormsInTotal.getText())>0) {
 			
-			System.out.println("Size: "+numberOfFormsInTotal.getText());
 			click(FormsdropDownArrow.get(0));
 			click(deleteProject);
 			click(confirmDeletionButton);
