@@ -27,22 +27,24 @@ public abstract class BaseTest {
 	WebDriver driver;
 
 	
+	@Parameters({ "browser" })
 	@BeforeClass
-	public void setup(ITestContext testContext) {//initiate the driver and set the URL
-		if(System.getProperty("browser").equalsIgnoreCase("chrome")) {
+	public void setup(ITestContext testContext, String browser) {// initiate the driver and set the URL
+		switch (browser) {
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		}
-		else if(System.getProperty("browser").equalsIgnoreCase("opera")) {
-			driver = new OperaDriver();
-		}
-		else if(System.getProperty("browser").equalsIgnoreCase("firefox")) {
+			break;
+		case "firefox":
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-		}
-		//driver = new SafariDriver();
-		//driver = new EdgeDriver();
-		testContext.setAttribute("WebDriver", this.driver);
-		driver.manage().window().maximize();
-		driver.get("https://app.involve.me");
+			break;
+		case "opera":
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+			break;
+		default:
+			break;
 	}
 	
 	@BeforeClass
