@@ -49,6 +49,11 @@ public abstract class BaseTest {
 		default:
 			break;
 		}
+		// driver = new SafariDriver();
+		// driver = new EdgeDriver();
+		testContext.setAttribute("WebDriver", this.driver);
+		driver.manage().window().maximize();
+		driver.get("https://app.involve.me");
 	}
 	
 	@BeforeClass
