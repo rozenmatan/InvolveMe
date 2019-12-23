@@ -60,6 +60,9 @@
 	          <suiteXmlFiles>
 	          	<suiteXmlFile>testng.xml</suiteXmlFile>
 	          </suiteXmlFiles>
+	          <systemPropertyVariables>
+	          		<browser>$(browser)</browser>
+	          </systemPropertyVariables>
    				<argLine>
 					-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
 				</argLine>
@@ -76,6 +79,19 @@
 				<groupId>io.qameta.allure</groupId>
 				<artifactId>allure-maven</artifactId>
 				<version>2.9</version>
+			</plugin>
+			<plugin>
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}/allure-results</directory>
+							<directory>${basedir}/screenshots</directory>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
       </plugins>
     </pluginManagement>

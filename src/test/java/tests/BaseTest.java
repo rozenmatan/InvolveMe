@@ -29,9 +29,15 @@ public abstract class BaseTest {
 	
 	@BeforeClass
 	public void setup(ITestContext testContext) {//initiate the driver and set the URL
-		driver = new ChromeDriver();
-		//driver = new OperaDriver();
-		//driver = new FirefoxDriver();
+		if(System.getProperty("browser").equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		}
+		else if(System.getProperty("browser").equalsIgnoreCase("opera")) {
+			driver = new OperaDriver();
+		}
+		else if(System.getProperty("browser").equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		}
 		//driver = new SafariDriver();
 		//driver = new EdgeDriver();
 		testContext.setAttribute("WebDriver", this.driver);
