@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
 import pageobjects.LoginPage;
 import pageobjects.deleteAllFromsPage;
 
@@ -31,44 +32,52 @@ public abstract class BaseTest {
 	
 	@Parameters({ "browser" })
 	@BeforeClass
-	public void setup(ITestContext testContext, String browser) {// initiate the driver and set the URL
-		System.out.println(browser);
+	@Description("initiate the driver and set the URL")
+	public void setup(ITestContext testContext, String browser) {
 		switch (browser) {
 		case "chrome":
-			//WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			break;
 		case "firefox":
-			//WebDriverManager.firefoxdriver().setup();
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
 		case "opera":
-			//WebDriverManager.operadriver().setup();
+			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
+			break;
+		case "edge":
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+			break;
+		case "safari":
+			driver = new SafariDriver();
 			break;
 		default:
 			break;
 		}
-		// driver = new SafariDriver();
-		// driver = new EdgeDriver();
 		testContext.setAttribute("WebDriver", this.driver);
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 	}
 	
 	@BeforeClass
-	public void setupLogin() {//the method calls for login procedure
+	@Description("the method calls for login procedure")
+	public void setupLogin() {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.login("rozenmatan1989@gmail.com","k6v5f3xx","correctCredentials");
 	}
 	
+	@Description("closes the page after all tests  in class is done")
 	@AfterClass
-	public void afterClass() {//closes the page after all tests  in class is done
+	public void afterClass() {
 		driver.quit();
 	}
 	
+	@Description("the method check the status of every test,is its failed it take a screen shot")
 	@AfterMethod
-	public void failedTest(ITestResult result) {//the method check the status of every test,is its failed it take a screen shot
+	public void failedTest(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE ){
 			TakesScreenshot ts = (TakesScreenshot)driver;
 			File srcFile = ts.getScreenshotAs(OutputType.FILE);
@@ -82,8 +91,9 @@ public abstract class BaseTest {
 		}
 	}
 	
+	@Description("the method delete all forms that was created for the next run")
 	@AfterSuite
-	public void deleteAllForms() {//the method delete all forms that was created for the next run
+	public void deleteAllForms() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
