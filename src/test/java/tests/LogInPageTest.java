@@ -27,7 +27,7 @@ public class LogInPageTest extends BaseTest{
 	public void loginWithWrongPassword(String email,String password) {//
 		LoginPage loginPage = new LoginPage(driver);
 		String errorMessage = loginPage.login(email,password,"wrongCredentials");
-		AssertJUnit.assertEquals(errorMessage,"1These credentials do not match our records.");
+		AssertJUnit.assertEquals(errorMessage,"These credentials do not match our records.");
 	}
 
 	@DataProvider
