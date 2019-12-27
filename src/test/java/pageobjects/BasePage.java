@@ -25,7 +25,6 @@ public abstract class BasePage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		writeToLog("<<<<BasePage Constractor");
-		//matan
 	}
 	protected void type(WebElement el,String str) {//type text to an element
 		writeToLog(">>>>type");
