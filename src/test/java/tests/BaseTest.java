@@ -47,13 +47,6 @@ public abstract class BaseTest {
 			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
 			break;
-		case "edge":
-			WebDriverManager.edgedriver().setup();
-			driver = new EdgeDriver();
-			break;
-		case "safari":
-			driver = new SafariDriver();
-			break;
 		default:
 			break;
 		}
