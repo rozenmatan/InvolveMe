@@ -29,7 +29,7 @@ public abstract class BaseTest {
 
 	WebDriver driver;
 
-	
+	//elad
 	@Parameters({ "browser" })
 	@BeforeClass
 	@Description("initiate the driver and set the URL")
