@@ -27,10 +27,10 @@ public class deleteAllFromsPage extends Template{
 		
 		while(Integer.parseInt(numberOfFormsInTotal.getText())>0) {
 			
+			int numbersOfFormsThatLeftToDelete = Integer.parseInt(numberOfFormsInTotal.getText());
 			click(FormsdropDownArrow.get(0));
 			click(deleteProject);
 			click(confirmDeletionButton);
-			int numbersOfFormsThatLeftToDelete = Integer.parseInt(numberOfFormsInTotal.getText());
 			waitForTextToBePresentOnElement(numberOfFormsInTotal, String.valueOf(numbersOfFormsThatLeftToDelete-1));
 			
 			

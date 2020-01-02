@@ -81,10 +81,26 @@ public abstract class BaseTest {
 		}
 	}
 	
+	@Parameters({ "browser" })
 	@Description("the method delete all forms that was created for the next run")
 	@AfterSuite
-	public void deleteAllForms() {
-		driver = new ChromeDriver();
+	public void deleteAllForms(String browser) {
+		switch (browser) {
+		case "chrome":
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			break;
+		case "firefox":
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			break;
+		case "opera":
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+			break;
+		default:
+			break;
+		}
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 		LoginPage loginPage = new LoginPage(driver);

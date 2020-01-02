@@ -22,7 +22,6 @@ public class CalculatorPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
 	public void createPersonalLoanCalculator() {//the method create new form in order to check it on the next step
 		
 		click(filterCalculator);
