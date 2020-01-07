@@ -16,6 +16,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.asm.Advice.AllArguments;
+import utilities.AllureAttachment;
+
 public abstract class BasePage {
 	protected WebDriver driver;
 	private int timeOutInSeconds = 40;
@@ -197,6 +200,6 @@ public abstract class BasePage {
 
 	}
 	protected void writeToLog(String str) {//the method is printing to console everytime function is execute and finish 
-		System.out.println(str);//In real project this method will write to a log file 
+		AllureAttachment.addTextAttachment(str);
 	}
 }

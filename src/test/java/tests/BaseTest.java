@@ -27,7 +27,7 @@ public abstract class BaseTest {
 
 	WebDriver driver;
 
-	@Parameters({ "browser" })
+	@Parameters( {"browser"} )
 	@BeforeClass
 	@Description("initiate the driver and set the URL")
 	public void setup(ITestContext testContext, String browser) {
