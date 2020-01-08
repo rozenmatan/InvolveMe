@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import io.qameta.allure.Step;
 
 public class LoginPage extends BasePage{
 	@FindBy(css="[type='email']")
@@ -33,7 +32,7 @@ public class LoginPage extends BasePage{
 		if(state.equalsIgnoreCase("correctcredentials"))
 			waitForElementToBeVisible(selectorAfterSuccessLogin);//check the main text after login page
 		else if(state.equalsIgnoreCase("wrongcredentials")) {
-			waitForElementToBeVisible(errorMessageAfterFaildLogin);//check the error exist
+			waitForElementToBeVisible(errorMessageAfterFaildLogin);//check if the error exist
 			
 			return getText(errorMessageAfterFaildLogin);
 		}

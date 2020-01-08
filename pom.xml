@@ -98,6 +98,8 @@
 					<filesets>
 						<fileset>
 							<directory>${basedir}/allure-results</directory>
+						</fileset>
+						<fileset>
 							<directory>${basedir}/screenshots</directory>
 						</fileset>
 					</filesets>
