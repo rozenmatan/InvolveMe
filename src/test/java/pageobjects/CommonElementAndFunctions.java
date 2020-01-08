@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Template extends BasePage{
+public class CommonElementAndFunctions extends BasePage{
 
 	@FindBy(css=".wrapper>.c-button")
 	protected WebElement moveToNextQuestionButton;
@@ -41,25 +41,31 @@ public class Template extends BasePage{
 	@FindBy(css="#nav-dropdown")
 	protected WebElement dropDown;
 	
-	public Template(WebDriver driver) {
+	public CommonElementAndFunctions(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
-	protected void editAndPublish() {//the method is doing the create and publish procedure in several cases
+	/**
+	 * @desctiption doing the create and publish procedure in several cases
+	 */
+	protected void editAndPublish() {
 		click(useThisTemplate);
 		click(startEditing);
 		click(firstPublishButton);
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
-	
-	public void clickOnTopMenuByValue(String str) {//the method clicks on one of top menu items by value
+	/**
+	 * @desctiption clicks on one of top menu items by value
+	 */
+	public void clickOnTopMenuByValue(String str) {
 		waitForElementToBeClickable(dropDown);
 		click(getElementInListByValue(topMenu, str));
 	}
-	
-	public void clickOnProjectListByValue(String str) {//the method clicks on one of the project that created by value
+	/**
+	 * @desctiption clicks on one of the project that created by value
+	 */
+	public void clickOnProjectListByValue(String str) {
 		click(getElementInListByValue(projectsList, str));
 	}
 	

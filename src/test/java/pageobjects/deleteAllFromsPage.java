@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class deleteAllFromsPage extends Template{
+public class deleteAllFromsPage extends CommonElementAndFunctions{
 	
 	@FindBy(css=".justify-right>.dropdown.relative")
 	private List <WebElement> FormsdropDownArrow;
@@ -22,7 +22,9 @@ public class deleteAllFromsPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * @desctiption delete all forms that was created in the last run
+	 */
 	public void deleteAllFroms() {
 		
 		while(Integer.parseInt(numberOfFormsInTotal.getText())>0) {

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class PromotionPage extends Template{
+public class PromotionPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-promotion")
 	private WebElement filterPromotion;
@@ -27,14 +27,19 @@ public class PromotionPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void createWinTripToSanFransisco() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createWinTripToSanFransisco() {
 		click(filterPromotion);
 		click(sanFransiscoForm);
 		editAndPublish();
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Promotion page details: ")
-	public void checkWinTripToSanFransisco(String firstName, String lastName, String email) {//the method checks the form that created by the previous method
+	public void checkWinTripToSanFransisco(String firstName, String lastName, String email) {
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		type(firstNameInput, firstName);

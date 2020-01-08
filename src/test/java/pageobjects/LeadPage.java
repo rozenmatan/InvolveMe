@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class LeadPage extends Template{
+public class LeadPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-leadpage")
 	private WebElement filterLeadPage;
@@ -30,16 +30,21 @@ public class LeadPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void createAgencyLeadGen() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createAgencyLeadGen() {
 		click(filterLeadPage);
 		click(AgencyLeadGen);
 		click(useThisTemplate);
 		click(startEditing);
 		click(saveAndExit);
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Lead page details: ")
-	public void checkAgencyLeadGen(String firstAnswer, String secondAnswer, String firstName, String organization, String email, String timeFrame) {//the method checks the form that created by the previous method
+	public void checkAgencyLeadGen(String firstAnswer, String secondAnswer, String firstName, String organization, String email, String timeFrame) {
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

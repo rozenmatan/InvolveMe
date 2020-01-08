@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class QuizPage extends Template{
+public class QuizPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-quiz")
 	private WebElement filterQuiz;
@@ -29,7 +29,10 @@ public class QuizPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	public void createTechnologyQuiz() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createTechnologyQuiz() {
 		click(filterQuiz);
 		click(technologyQuiz);
 		click(useThisTemplate);
@@ -40,8 +43,11 @@ public class QuizPage extends Template{
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Quiz page details: ")
-	public void checkTechnologyQuiz(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {//the method checks the form that created by the previous method
+	public void checkTechnologyQuiz(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		click(moveToNextQuestionButton);

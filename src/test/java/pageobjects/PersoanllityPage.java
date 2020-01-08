@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class PersoanllityPage extends Template{
+public class PersoanllityPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-personality_test")
 	private WebElement filterPersonalltyTest;
@@ -41,8 +41,10 @@ public class PersoanllityPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-
-	public void createWhatAnimalAreYouTest(String dropDownValue) {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createWhatAnimalAreYouTest(String dropDownValue) {
 		click(filterPersonalltyTest);
 		click(whatAnimalAreYou);
 		click(useThisTemplate);
@@ -75,8 +77,11 @@ public class PersoanllityPage extends Template{
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Personallity page details: ")
-	public void checkWhatAnimalAreYouTest(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer) {//the method checks the form that created by the previous method
+	public void checkWhatAnimalAreYouTest(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer) {
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		waitForElementToBeFixAtLocation(moveToNextQuestionButton);

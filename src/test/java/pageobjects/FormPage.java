@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class FormPage extends Template{
+public class FormPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-form")
 	private WebElement filterSurvey;
@@ -40,14 +40,19 @@ public class FormPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void createContractForm() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption
+	 */
+	public void createContractForm() {//create new form in order to check it on the next step
 		click(filterSurvey);
 		click(contactForm);
 		editAndPublish();
 	}
+	/**
+	 * @desctiption
+	 */
 	@Step("Form details: ")
-	public void checkContractForm(String name, String email, String phone, String firstDropDownValue, String secondDropDownValue, String textAreaValue ) {//the method checks the form that created by the previous method
+	public void checkContractForm(String name, String email, String phone, String firstDropDownValue, String secondDropDownValue, String textAreaValue ) {//checks the form that created by the previous method
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

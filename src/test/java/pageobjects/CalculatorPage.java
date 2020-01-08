@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class CalculatorPage extends Template{
+public class CalculatorPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-calculator")
 	private WebElement filterCalculator;
@@ -22,7 +22,10 @@ public class CalculatorPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	public void createPersonalLoanCalculator() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption
+	 */
+	public void createPersonalLoanCalculator() {//create new form in order to check it on the next step
 		
 		click(filterCalculator);
 		click(personalLoanCalculator);
@@ -31,8 +34,11 @@ public class CalculatorPage extends Template{
 		click(saveAndExit);
 		
 	}
+	/**
+	 * @desctiption
+	 */
 	@Step("loan amount: {0}")
-	public void checkPersonalLoanCalculator(String loanAmount) {//the method checks the form that created by the previous method
+	public void checkPersonalLoanCalculator(String loanAmount) {//checks the form that created by the previous method
 		
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens

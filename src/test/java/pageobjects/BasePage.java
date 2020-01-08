@@ -29,7 +29,10 @@ public abstract class BasePage {
 		PageFactory.initElements(driver, this);
 		writeToLog("<<<<BasePage Constractor");
 	}
-	protected void type(WebElement el,String str) {//type text to an element
+	/**
+	 * @desctiption type text to an element
+	 */
+	protected void type(WebElement el,String str) {
 		writeToLog(">>>>type");
 		waitForElementToBeClickable(el);
 		highlightElement(el, "blue");
@@ -37,19 +40,28 @@ public abstract class BasePage {
 		el.sendKeys(str);
 		writeToLog("<<<<type");
 	}
-	protected void click(WebElement el) {//click on element
+	/**
+	 * @desctiption click on element
+	 */
+	protected void click(WebElement el) {
 		writeToLog(">>>>click");
 		waitForElementToBeClickable(el);
 		highlightElement(el, "blue");
 		el.click();
 		writeToLog("<<<<click");
 	}
-	protected void waitForElementToBeVisible(WebElement el) {//the method wait until element will be visible
+	/**
+	 * @desctiption wait until element will be visible
+	 */
+	protected void waitForElementToBeVisible(WebElement el) {
 		writeToLog(">>>>waitForElementToBeVisible");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(el));
 		writeToLog("<<<<waitForElementToBeVisible");
 	}
+	/**
+	 * @desctiption wait until text will be present and show ton element
+	 */
 	protected void waitForTextToBePresentOnElement(final WebElement el,final String txt) {
 		writeToLog(">>>>waitForTextToBePresentOnElement");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -61,19 +73,28 @@ public abstract class BasePage {
 		});
 		
 	}
-	protected void waitForElementToBeClickable(WebElement el) {//the method wait until element will be clickable
+	/**
+	 * @desctiption wait until element will be clickable
+	 */
+	protected void waitForElementToBeClickable(WebElement el) {
 		writeToLog(">>>>waitForElementToBeClickable");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(el));
 		writeToLog("<<<<waitForElementToBeClickable");
 	}
-	protected String getText(WebElement el) {//return existing text on an element
+	/**
+	 * @desctiption return existing text on an element
+	 */
+	protected String getText(WebElement el) {
 		writeToLog(">>>>getText");
 		highlightElement(el, "orange");
 		writeToLog("<<<<getText");
 		return el.getText();
 	}
-	protected WebElement getElementInListByValue(final List <WebElement> list,String value) {//the method return an element that contains a specific text
+	/**
+	 * @desctiption return an element that contains a specific text
+	 */
+	protected WebElement getElementInListByValue(final List <WebElement> list,String value) {
 		writeToLog(">>>>getElementInListByValue");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(new ExpectedCondition<Boolean>() {
@@ -93,7 +114,10 @@ public abstract class BasePage {
 		writeToLog("<<<<getElementInListByValue**null**");
 		return null;
 	}
-	protected void waitForProgressBarWidth(final String width,final WebElement progressBar) {//the method waits until the top progress bar will reach to a specific value
+	/**
+	 * @desctiption waits until the top progress bar will reach to a specific value(usually check that a page is finish loads)
+	 */
+	protected void waitForProgressBarWidth(final String width,final WebElement progressBar) {
 		writeToLog(">>>>waitForProgressBarWidth");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(new ExpectedCondition<Boolean>() {
@@ -104,7 +128,10 @@ public abstract class BasePage {
 			}
 		});
 	}
-	protected void waitForElementToBeFixAtLocation(final WebElement el) {//the method waits until an element is fixed and not in motion(usually check that a page is finish loads)
+	/**
+	 * @desctiption waits until an element is fixed and not in motion(usually check that a page is finish loads)
+	 */
+	protected void waitForElementToBeFixAtLocation(final WebElement el) {
 		writeToLog(">>>>waitForElementToBeAtLocation");
 		waitForElementToBeVisible(el);
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
@@ -121,7 +148,10 @@ public abstract class BasePage {
 		});
 		writeToLog("<<<<waitForElementToBeAtLocation");
 	}
-	protected void moveBetweenHandels(String parentHandel) {//the method moves between windows 
+	/**
+	 * @desctiption moves between windows 
+	 */
+	protected void moveBetweenHandels(String parentHandel) {
 		writeToLog(">>>>moveBetweenHandels");
 		Set<String> handels = driver.getWindowHandles();
 		for(String h:handels) {
@@ -132,42 +162,63 @@ public abstract class BasePage {
 			}
 		}
 	}
-	protected void switchToWindow(String handle) {//the method does the switch action
+	/**
+	 * @desctiption does the switch action
+	 */
+	protected void switchToWindow(String handle) {
 		writeToLog(">>>>switchToWindow");
 		driver.switchTo().window(handle);
 		writeToLog("<<<<switchToWindow");
 	}
-	protected void chooseSelectElementByValue(WebElement el,String value) {//the method choose a drop down element by value
+	/**
+	 * @desctiption choose a drop down element by value
+	 */
+	protected void chooseSelectElementByValue(WebElement el,String value) {
 		writeToLog(">>>>chooseSelectElementByValue");
 		Select select = new Select(el);
 		select.selectByValue(value);
 		writeToLog("<<<<chooseSelectElementByValue");
 	}
-	protected void chooseSelectElementByVisibleText(WebElement el,String visibleText) {//the method choose a drop down element by visible text
+	/**
+	 * @desctiption choose a drop down element by visible text
+	 */
+	protected void chooseSelectElementByVisibleText(WebElement el,String visibleText) {
 		writeToLog(">>>>chooseSelectElementByVisibleText");
 		Select select = new Select(el);
 		select.selectByValue(visibleText);
 		writeToLog("<<<<chooseSelectElementByVisibleText");
 	}
-	protected void chooseSelectElementByIndex(WebElement el,int index) {//the method choose a drop down element by index
+	/**
+	 * @desctiption choose a drop down element by index
+	 */
+	protected void chooseSelectElementByIndex(WebElement el,int index) {
 		writeToLog(">>>>chooseSelectElementByIndex");
 		Select select = new Select(el);
 		select.selectByIndex(index);
 		writeToLog("<<<<chooseSelectElementByIndex");
 	}
-	protected void closeCurrentTab() {//the method close the current open tab
+	/**
+	 * @desctiption close the current open tab
+	 */
+	protected void closeCurrentTab() {
 		writeToLog(">>>>closeCurrentTab");
 		driver.close();
 		writeToLog("<<<<closeCurrentTab");
 	}
-	protected void dragAndDropByXY(WebElement el,int x,int y) {//the method moves element via X and Y
+	/**
+	 * @desctiption moves element via X and Y
+	 */
+	protected void dragAndDropByXY(WebElement el,int x,int y) {
 		writeToLog(">>>>dragAndDropByXY");
 		Actions act = new Actions(driver);
 		act.dragAndDropBy(el, x, y).release().perform();
 		highlightElement(el, "blue");
 		writeToLog("<<<<dragAndDropByXY");
 	}
-	protected void dragAndDropToElement(WebElement source,WebElement target) {//the method moves element to a target element
+	/**
+	 * @desctiption moves element to a target element
+	 */
+	protected void dragAndDropToElement(WebElement source,WebElement target) {
 		writeToLog(">>>>dragAndDropToElement");
 		Point coordinates = target.getLocation();
 		Robot robot = null;
@@ -182,7 +233,10 @@ public abstract class BasePage {
 		act.dragAndDrop(source, target).release(target).perform();
 		writeToLog("<<<<dragAndDropToElement");
 	}
-	protected void highlightElement(WebElement element, String color) {//the method highlight an element
+	/**
+	 * @desctiption highlight an element
+	 */
+	protected void highlightElement(WebElement element, String color) {
 		writeToLog(">>>>highlightElement");
 		//keep the old style to change it back
 		String originalStyle = element.getAttribute("style");
@@ -199,7 +253,10 @@ public abstract class BasePage {
 		writeToLog("<<<<highlightElement");
 
 	}
-	protected void writeToLog(String str) {//the method is printing to console everytime function is execute and finish 
+	/**
+	 * @desctiption writing to allure log 
+	 */
+	protected void writeToLog(String str) {
 		AllureAttachment.addTextAttachment(str);
 	}
 }

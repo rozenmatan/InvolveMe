@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class SurveryPage extends Template{
+public class SurveryPage extends CommonElementAndFunctions{
 
 
 	@FindBy(css="#filter-survey")
@@ -23,16 +23,21 @@ public class SurveryPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	public void createEmployeeSurvery() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createEmployeeSurvery() {
 		click(filterSurvey);
 		click(employeeSurvery);
 		editAndPublish();
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Survery page details: ")
-	public void checkEmployeeSurvery(String firstAnswer, String secondAnswer) {//the method checks the form that created by the previous method
+	public void checkEmployeeSurvery(String firstAnswer, String secondAnswer) {
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
-		//waitForElementToBeClickable(moveToNextQuestionButton);
 		click(moveToNextQuestionButton);
 		waitForProgressBarWidth("25", progressBar);
 		click(getElementInListByValue(listOfAnswers, firstAnswer));

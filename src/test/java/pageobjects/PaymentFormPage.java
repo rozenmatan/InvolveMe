@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import io.qameta.allure.Step;
 
-public class PaymentFormPage extends Template{
+public class PaymentFormPage extends CommonElementAndFunctions{
 
 	@FindBy(css="#filter-payment")
 	private WebElement filterPaymentForm;
@@ -22,16 +22,21 @@ public class PaymentFormPage extends Template{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
-	public void createOnlineDonationForm() {//the method create new form in order to check it on the next step
+	/**
+	 * @desctiption create new form in order to check it on the next step
+	 */
+	public void createOnlineDonationForm() {
 		click(filterPaymentForm);
 		click(onlineDonationForm);
 		click(useThisTemplate);
 		click(startEditing);
 		click(saveAndExit);
 	}
+	/**
+	 * @desctiption checks the form that created by the previous method
+	 */
 	@Step("Donation form details: ")
-	public void checkOnlineDonationForm(String firstName, String lastName, String donationAmount) {//the method checks the form that created by the previous method
+	public void checkOnlineDonationForm(String firstName, String lastName, String donationAmount) {
 		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		click(moveToNextQuestionButton);

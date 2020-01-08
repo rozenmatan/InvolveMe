@@ -23,6 +23,9 @@ public class LoginPage extends BasePage{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * @desctiption does login by state(wrong credentials or correct credentials)
+	 */
 	public String login(String email,String password,String state) {
 		type(emailField,email);
 		type(passwordField, password);
