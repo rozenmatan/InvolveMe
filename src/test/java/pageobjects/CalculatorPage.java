@@ -44,6 +44,7 @@ public class CalculatorPage extends CommonElementAndFunctions{
 		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
 		waitForElementToBeClickable(moveToNextQuestionButton);
 		click(moveToNextQuestionButton);
+		waitForElementToBeClickable(loanAmountInput);
 		waitForElementToBeFixAtLocation(moveToNextQuestionButton);
 		type(loanAmountInput, loanAmount);
 		dragAndDropByXY(loanTerm, 123, 0);//1 year means move X by 41

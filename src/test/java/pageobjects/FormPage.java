@@ -14,15 +14,15 @@ public class FormPage extends CommonElementAndFunctions{
 	private WebElement filterSurvey;
 	@FindBy(css="[alt='Contact Form']")
 	private WebElement contactForm;
-	@FindBy(css="[placeholder='First Name*']")
+	@FindBy(css=".initialEnter>div:nth-child(4)>.wrapper>.component-needs-validation>div:nth-child(1)>label>input")
 	private WebElement firstNameInput;
-	@FindBy(css="[placeholder='Email*']")
+	@FindBy(css=".initialEnter>div:nth-child(4)>.wrapper>.component-needs-validation>div:nth-child(2)>label>input")
 	private WebElement emailInput;
-	@FindBy(css="[placeholder='Phone']")
+	@FindBy(css=".initialEnter>div:nth-child(4)>.wrapper>.component-needs-validation>div:nth-child(3)>label>input")
 	private WebElement phoneInput;
-	@FindBy(css="[placeholder='What do you need help with?*']")
+	@FindBy(css=".initialEnter>div:nth-child(5)>div>.c-dropdown>.el-select>.el-input")
 	private WebElement needHelpDropDown;
-	@FindBy(css="[placeholder='How did you hear about us?*']")
+	@FindBy(css=".initialEnter>div:nth-child(6)>div>.c-dropdown>.el-select>.el-input")
 	private WebElement hearAboutUsDropDown;
 	@FindBy(css=".el-select-dropdown__item")
 	private List <WebElement> dropDownList;
@@ -34,7 +34,6 @@ public class FormPage extends CommonElementAndFunctions{
 	private List <WebElement> checkBoxs;
 	@FindBy(css=".el-input__icon.is-reverse")
 	private WebElement dropDownIsOpen;
-	
 	
 	public FormPage(WebDriver driver) {
 		super(driver);
@@ -60,12 +59,6 @@ public class FormPage extends CommonElementAndFunctions{
 		type(firstNameInput, name);
 		type(emailInput, email);
 		type(phoneInput, phone);
-		click(needHelpDropDown);
-		click(dropDownArrows.get(0));
-		waitForElementToBeVisible(dropDownIsOpen);
-		click(hearAboutUsDropDown);
-		click(dropDownArrows.get(1));
-		waitForElementToBeVisible(dropDownIsOpen);
 		type(messegeTextArea, textAreaValue);
 		click(checkBoxs.get(1));
 		click(moveToNextQuestionButton);

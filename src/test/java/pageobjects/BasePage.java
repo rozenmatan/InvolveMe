@@ -16,7 +16,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import net.bytebuddy.asm.Advice.AllArguments;
 import utilities.AllureAttachment;
 
 public abstract class BasePage {
@@ -58,6 +57,15 @@ public abstract class BasePage {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(el));
 		writeToLog("<<<<waitForElementToBeVisible");
+	}
+	/**
+	 * @desctiption wait until element will be visible
+	 */
+	protected void waitForElementToBeInvisible(WebElement el) {
+		writeToLog(">>>>waitForElementToBeInvisible");
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		wait.until(ExpectedConditions.invisibilityOf(el));
+		writeToLog("<<<<waitForElementToBeInvisible");
 	}
 	/**
 	 * @desctiption wait until text will be present and show ton element

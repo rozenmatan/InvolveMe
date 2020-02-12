@@ -27,13 +27,20 @@ public class deleteAllFromsPage extends CommonElementAndFunctions{
 	 */
 	public void deleteAllFroms() {
 		
-		while(Integer.parseInt(numberOfFormsInTotal.getText())>0) {
+		while(!numberOfFormsInTotal.getText().equals("0")) {
 			
 			int numbersOfFormsThatLeftToDelete = Integer.parseInt(numberOfFormsInTotal.getText());
 			click(FormsdropDownArrow.get(0));
 			click(deleteProject);
 			click(confirmDeletionButton);
-			waitForTextToBePresentOnElement(numberOfFormsInTotal, String.valueOf(numbersOfFormsThatLeftToDelete-1));
+			try {
+				waitForTextToBePresentOnElement(numberOfFormsInTotal, String.valueOf(numbersOfFormsThatLeftToDelete-1));
+			}
+			catch(org.openqa.selenium.StaleElementReferenceException ex)
+			{
+				waitForTextToBePresentOnElement(numberOfFormsInTotal, String.valueOf(numbersOfFormsThatLeftToDelete-1));
+			}
+			
 			
 			
 		}

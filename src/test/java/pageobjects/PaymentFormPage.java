@@ -46,7 +46,8 @@ public class PaymentFormPage extends CommonElementAndFunctions{
 		waitForElementToBeFixAtLocation(lastNameInput);
 		type(lastNameInput, lastName);
 		click(moveToNextQuestionButton);
-		waitForElementToBeFixAtLocation(donationInput);
+		waitForElementToBeClickable(donationInput);
+		waitForElementToBeFixAtLocation(moveToNextQuestionButton);
 		type(donationInput, donationAmount);
 		click(moveToNextQuestionButton);
 		waitForProgressBarWidth("35.7143", progressBar);
