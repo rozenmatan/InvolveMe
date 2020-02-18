@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -48,7 +49,7 @@ public abstract class BaseTest {
 		loginPage.login("rozenmatan1989@gmail.com","k6v5f3xx","correctCredentials");
 	}
 	
-	@Description("closes the page after all tests  in class is done")
+	@Description("closes the page after the test is done")
 	@AfterMethod(dependsOnMethods = "failedTest")
 	public void afterMethod() {
 		driver.quit();
@@ -88,11 +89,11 @@ public abstract class BaseTest {
 	public void chooseBrowserAndEnv(String browser, String env, String video,ITestResult result) throws MalformedURLException {
 		boolean enableVideoFlag = false;
 		
-		if(video.equals("true"))
+		if(video.equalsIgnoreCase("true"))
 			enableVideoFlag = true;
 		
 		if(env.equalsIgnoreCase("local")) {
-			switch (browser) {
+			switch (browser.toLowerCase()) {
 				case "chrome":
 					WebDriverManager.chromedriver().setup();
 					driver = new ChromeDriver();
@@ -105,44 +106,33 @@ public abstract class BaseTest {
 					WebDriverManager.operadriver().setup();
 					driver = new OperaDriver();
 					break;
-				default:
-					break;
 			}
 		}else if(env.equalsIgnoreCase("docker")) {
-			switch (browser) {
+			
+			switch (browser.toLowerCase()) {
 				case "chrome":
 					cap = new DesiredCapabilities();
 					cap.setBrowserName("chrome");
 					cap.setVersion("79.0");
-					cap.setCapability("enableVNC", true);
-					if(result != null)
-						cap.setCapability("videoName",result.getMethod().getMethodName());
-					cap.setCapability("enableVideo", enableVideoFlag);
-					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 					break;
 				case "firefox":
 					cap = new DesiredCapabilities();
 					cap.setBrowserName("firefox");
 					cap.setVersion("71.0");
-					cap.setCapability("enableVNC", true);
-					if(result != null)
-						cap.setCapability("videoName",result.getMethod().getMethodName());
-					cap.setCapability("enableVideo", enableVideoFlag);
-					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 					break;
 				case "opera":
 					cap = new DesiredCapabilities();
 					cap.setBrowserName("opera");
 					cap.setVersion("66.0");
-					cap.setCapability("enableVNC", true);
-					if(result != null)
-						cap.setCapability("videoName",result.getMethod().getMethodName());
-					cap.setCapability("enableVideo", enableVideoFlag);
-					driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
-					break;
-				default:
 					break;
 			}
+			cap.setCapability("enableVNC", true);
+			if(result != null)
+				cap.setCapability("videoName",result.getMethod().getMethodName());
+			else
+				cap.setCapability("videoName","deleteAllForms");
+			cap.setCapability("enableVideo", enableVideoFlag);
+			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 		}
 	}
 
