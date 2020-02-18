@@ -41,7 +41,7 @@ public abstract class BaseTest {
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 	}
-	
+	//this is test for git
 	@BeforeMethod
 	@Description("the method calls for login procedure")
 	public void setupLogin() {
