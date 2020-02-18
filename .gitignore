@@ -41,6 +41,7 @@ allure-report/*
 ScreenShots/
 video/*
 .allure
+cm
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
