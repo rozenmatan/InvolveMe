@@ -31,7 +31,7 @@ public abstract class BaseTest {
 
 	WebDriver driver;
 	DesiredCapabilities cap;
-	//hello
+
 	@Parameters( {"browser","env","video"} )
 	@BeforeMethod
 	@Description("initiate the driver and set the URL")
