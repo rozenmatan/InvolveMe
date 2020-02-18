@@ -31,7 +31,7 @@ public abstract class BaseTest {
 
 	WebDriver driver;
 	DesiredCapabilities cap;
-	//This is test for git practice
+
 	@Parameters( {"browser","env","video"} )
 	@BeforeMethod
 	@Description("initiate the driver and set the URL")
@@ -41,7 +41,7 @@ public abstract class BaseTest {
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 	}
-	//this is test for git
+
 	@BeforeMethod
 	@Description("the method calls for login procedure")
 	public void setupLogin() {
