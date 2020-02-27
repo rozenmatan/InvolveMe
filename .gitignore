@@ -29,6 +29,7 @@ target/
 *.class
 /bin
 *.log
+remoting.log.*
 *.nar
 *.zip
 *.tar.gz
