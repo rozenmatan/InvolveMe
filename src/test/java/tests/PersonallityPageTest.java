@@ -8,9 +8,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pageobjects.PersoanllityPage;
 
-
 @Epic("Personallity page")
-public class PersonallityPageTest extends BaseTest{
+public class PersonallityPageTest extends BaseTest {
 
 	@Severity(SeverityLevel.NORMAL)
 	@Test
@@ -20,6 +19,7 @@ public class PersonallityPageTest extends BaseTest{
 		persoanllityPage.clickOnTopMenuByValue("Templates");
 		persoanllityPage.createWhatAnimalAreYouTest("-2");
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createWhatAnimalAreYouForm")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
@@ -27,6 +27,6 @@ public class PersonallityPageTest extends BaseTest{
 		PersoanllityPage persoanllityPage = new PersoanllityPage(driver);
 		persoanllityPage.clickOnTopMenuByValue("Projects");
 		persoanllityPage.clickOnProjectListByValue("What Animal Are You?");
-		persoanllityPage.checkWhatAnimalAreYouTest("Volcano","2","Fire","On the Moon");
+		persoanllityPage.checkWhatAnimalAreYouTest("Volcano", "2", "Fire", "On the Moon");
 	}
 }

@@ -8,11 +8,9 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pageobjects.QuizPage;
 
-
-
 @Epic("Quiz page")
-public class QuizPageTest extends BaseTest{
-	
+public class QuizPageTest extends BaseTest {
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test
 	@Description("The method opens the templates page and create new form ")
@@ -21,6 +19,7 @@ public class QuizPageTest extends BaseTest{
 		quizPage.clickOnTopMenuByValue("Templates");
 		quizPage.createTechnologyQuiz();
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createTechnologyQuiz")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
@@ -28,8 +27,9 @@ public class QuizPageTest extends BaseTest{
 		QuizPage quizPage = new QuizPage(driver);
 		quizPage.clickOnTopMenuByValue("Projects");
 		quizPage.clickOnProjectListByValue("Technology Quiz");
-		quizPage.checkTechnologyQuiz("Steve Jobs","Operating System","2000","World Wide Web","Animation/video file");
-		
+		quizPage.checkTechnologyQuiz("Steve Jobs", "Operating System", "2000", "World Wide Web",
+				"Animation/video file");
+
 	}
 
 }

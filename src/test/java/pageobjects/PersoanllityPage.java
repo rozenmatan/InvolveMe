@@ -5,42 +5,42 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import io.qameta.allure.Step;
 
-public class PersoanllityPage extends CommonElementAndFunctions{
+public class PersoanllityPage extends CommonElementAndFunctions {
 
-	@FindBy(css="#filter-personality_test")
+	@FindBy(css = "#filter-personality_test")
 	private WebElement filterPersonalltyTest;
-	@FindBy(css="img[src*='what-animal-are-you']")
+	@FindBy(css = "img[src*='what-animal-are-you']")
 	private WebElement whatAnimalAreYou;
-	@FindBy(css="[data-pagenr='1']")
+	@FindBy(css = "[data-pagenr='1']")
 	private WebElement pageNumberTwo;
-	@FindBy(css="[data-pagenr='2']")
+	@FindBy(css = "[data-pagenr='2']")
 	private WebElement pageNumberThree;
-	@FindBy(css="[data-pagenr='3']")
+	@FindBy(css = "[data-pagenr='3']")
 	private WebElement pageNumberFour;
-	@FindBy(css="[data-pagenr='4']")
+	@FindBy(css = "[data-pagenr='4']")
 	private WebElement pageNumberFive;
-	@FindBy(css=".c-question-image-container")
+	@FindBy(css = ".c-question-image-container")
 	private WebElement questionsImageContainer;
-	@FindBy(css=".c-question-container")
+	@FindBy(css = ".c-question-container")
 	private WebElement questionsContainer;
-	@FindBy(css="div[id='accordeon-question-image-answers'] select")
-	private List <WebElement> connectAnswersWithImagesToOutcome;
-	@FindBy(css="div[id='accordeon-question-answers'] select")
-	private List <WebElement> connectAnswersWithTextToOutcome;
-	@FindBy(css=".c-answer-container>.answer-behaviour")
-	private List <WebElement> listOfAnswersWithImage;
-	@FindBy(css=".wrapper button")
-	private List <WebElement> listOfAnswersWithText;
-	@FindBy(css=".content-item-edit-container-wrapper")
+	@FindBy(css = "div[id='accordeon-question-image-answers'] select")
+	private List<WebElement> connectAnswersWithImagesToOutcome;
+	@FindBy(css = "div[id='accordeon-question-answers'] select")
+	private List<WebElement> connectAnswersWithTextToOutcome;
+	@FindBy(css = ".c-answer-container>.answer-behaviour")
+	private List<WebElement> listOfAnswersWithImage;
+	@FindBy(css = ".wrapper button")
+	private List<WebElement> listOfAnswersWithText;
+	@FindBy(css = ".content-item-edit-container-wrapper")
 	private WebElement sideMenu;
-	
+
 	public PersoanllityPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @desctiption create new form in order to check it on the next step
 	 */
@@ -77,13 +77,15 @@ public class PersoanllityPage extends CommonElementAndFunctions{
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
+
 	/**
 	 * @desctiption checks the form that created by the previous method
 	 */
 	@Step("Personallity page details: ")
-	public void checkWhatAnimalAreYouTest(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer) {
-		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
-		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
+	public void checkWhatAnimalAreYouTest(String firstAnswer, String secondAnswer, String thirdAnswer,
+			String fourthAnswer) {
+		String mainMenuHandel = driver.getWindowHandle();// save the main page handle
+		moveBetweenHandels(mainMenuHandel);// move focus to the new tab that opens
 		waitForElementToBeFixAtLocation(moveToNextQuestionButton);
 		click(moveToNextQuestionButton);
 		waitForElementToBeFixAtLocation(getElementInListByValue(listOfAnswersWithImage, firstAnswer));
@@ -94,7 +96,7 @@ public class PersoanllityPage extends CommonElementAndFunctions{
 		click(getElementInListByValue(listOfAnswersWithImage, thirdAnswer));
 		waitForElementToBeFixAtLocation(getElementInListByValue(listOfAnswersWithText, fourthAnswer));
 		click(getElementInListByValue(listOfAnswersWithText, fourthAnswer));
-		closeCurrentTab();//close the tab that used to check the form
-		switchToWindow(mainMenuHandel);//move the focus back to the main window
+		closeCurrentTab();// close the tab that used to check the form
+		switchToWindow(mainMenuHandel);// move the focus back to the main window
 	}
 }

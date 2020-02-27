@@ -3,32 +3,32 @@ package pageobjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import io.qameta.allure.Step;
 
-public class QuizPage extends CommonElementAndFunctions{
+public class QuizPage extends CommonElementAndFunctions {
 
-	@FindBy(css="#filter-quiz")
+	@FindBy(css = "#filter-quiz")
 	private WebElement filterQuiz;
-	@FindBy(css="[alt='Technology Quiz']")
+	@FindBy(css = "[alt='Technology Quiz']")
 	private WebElement technologyQuiz;
-	@FindBy(css=".feedback-box>.feedback-text.correct")
+	@FindBy(css = ".feedback-box>.feedback-text.correct")
 	private WebElement correctFeedback;
-	@FindBy(css=".btn-group.float-right.rel>button")
+	@FindBy(css = ".btn-group.float-right.rel>button")
 	private WebElement quizDropDownMenu;
-	@FindBy(css=".c-menu-video>.svg-wrapper")
+	@FindBy(css = ".c-menu-video>.svg-wrapper")
 	private WebElement videoElementToDrag;
-	@FindBy(css=".has-spacer>.c-spacer-container ")
+	@FindBy(css = ".has-spacer>.c-spacer-container ")
 	private WebElement elementToDropOn;
-	@FindBy(css=".feedback-box>.feedback-text.correct")
+	@FindBy(css = ".feedback-box>.feedback-text.correct")
 	private WebElement answerFeedback;
-	@FindBy(css="[data-pagenr='6']")
+	@FindBy(css = "[data-pagenr='6']")
 	private WebElement lastPageInEditablePageContainer;
-	
+
 	public QuizPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 	/**
 	 * @desctiption create new form in order to check it on the next step
 	 */
@@ -38,18 +38,20 @@ public class QuizPage extends CommonElementAndFunctions{
 		click(useThisTemplate);
 		click(startEditing);
 		click(lastPageInEditablePageContainer);
-		//dragAndDropToElement(videoElementToDrag, elementToDropOn);
+		// dragAndDropToElement(videoElementToDrag, elementToDropOn);
 		click(firstPublishButton);
 		click(secondPublishButton);
 		click(publishNowButton);
 	}
+
 	/**
 	 * @desctiption checks the form that created by the previous method
 	 */
 	@Step("Quiz page details: ")
-	public void checkTechnologyQuiz(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer, String fifthAnswer) {
-		String mainMenuHandel = driver.getWindowHandle();//save the main page handle
-		moveBetweenHandels(mainMenuHandel);//move focus to the new tab that opens
+	public void checkTechnologyQuiz(String firstAnswer, String secondAnswer, String thirdAnswer, String fourthAnswer,
+			String fifthAnswer) {
+		String mainMenuHandel = driver.getWindowHandle();// save the main page handle
+		moveBetweenHandels(mainMenuHandel);// move focus to the new tab that opens
 		click(moveToNextQuestionButton);
 		waitForProgressBarWidth("28.5714", progressBar);
 		click(getElementInListByValue(listOfAnswers, firstAnswer));
@@ -57,24 +59,23 @@ public class QuizPage extends CommonElementAndFunctions{
 		click(moveToNextQuestionArrowRightButton);
 		waitForProgressBarWidth("42.8571", progressBar);
 		click(getElementInListByValue(listOfAnswers, secondAnswer));
-		waitForElementToBeFixAtLocation(answerFeedback);	
+		waitForElementToBeFixAtLocation(answerFeedback);
 		click(moveToNextQuestionArrowRightButton);
 		waitForProgressBarWidth("57.1429", progressBar);
 		click(getElementInListByValue(listOfAnswers, thirdAnswer));
-		waitForElementToBeFixAtLocation(answerFeedback);	
+		waitForElementToBeFixAtLocation(answerFeedback);
 		click(moveToNextQuestionArrowRightButton);
 		waitForProgressBarWidth("71.4286", progressBar);
 		click(getElementInListByValue(listOfAnswers, fourthAnswer));
-		waitForElementToBeFixAtLocation(answerFeedback);	
+		waitForElementToBeFixAtLocation(answerFeedback);
 		click(moveToNextQuestionArrowRightButton);
 		waitForProgressBarWidth("85.7143", progressBar);
 		click(getElementInListByValue(listOfAnswers, fifthAnswer));
 		waitForElementToBeFixAtLocation(answerFeedback);
 		click(moveToNextQuestionArrowRightButton);
 		waitForProgressBarWidth("100", progressBar);
-		closeCurrentTab();//close the tab that used to check the form
-		switchToWindow(mainMenuHandel);//move the focus back to the main window
+		closeCurrentTab();// close the tab that used to check the form
+		switchToWindow(mainMenuHandel);// move the focus back to the main window
 
-		
 	}
 }

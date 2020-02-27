@@ -6,10 +6,10 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import pageobjects.LeadPage; 
+import pageobjects.LeadPage;
 
 @Epic("Lead page")
-public class LeadPageTest extends BaseTest{
+public class LeadPageTest extends BaseTest {
 
 	@Severity(SeverityLevel.NORMAL)
 	@Test
@@ -19,7 +19,7 @@ public class LeadPageTest extends BaseTest{
 		leadPage.clickOnTopMenuByValue("Templates");
 		leadPage.createAgencyLeadGen();
 	}
-	
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createAgencyLeadGen")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
@@ -27,6 +27,7 @@ public class LeadPageTest extends BaseTest{
 		LeadPage leadPage = new LeadPage(driver);
 		leadPage.clickOnTopMenuByValue("Projects");
 		leadPage.clickOnProjectListByValue("Agency Lead Gen");
-		leadPage.checkAgencyLeadGen("Video Production","Smartphone","Matan","Automation","rozenmatan1989@gmail.com","5");
+		leadPage.checkAgencyLeadGen("Video Production", "Smartphone", "Matan", "Automation", "rozenmatan1989@gmail.com",
+				"5");
 	}
 }

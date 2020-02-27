@@ -8,9 +8,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pageobjects.SurveryPage;
 
-
 @Epic("Survey page")
-public class SurveyPageTest extends BaseTest{
+public class SurveyPageTest extends BaseTest {
 
 	@Severity(SeverityLevel.NORMAL)
 	@Test
@@ -20,14 +19,16 @@ public class SurveyPageTest extends BaseTest{
 		surveryPage.clickOnTopMenuByValue("Templates");
 		surveryPage.createEmployeeSurvery();
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createEmployeeSurvery")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
 	public void checkEmployeeSurvery() {
 		SurveryPage surveryPage = new SurveryPage(driver);
 		surveryPage.clickOnTopMenuByValue("Projects");
-		surveryPage.clickOnProjectListByValue("Employee Feedback Form");;
-		surveryPage.checkEmployeeSurvery("Manager","Engineering");
-		
+		surveryPage.clickOnProjectListByValue("Employee Feedback Form");
+		;
+		surveryPage.checkEmployeeSurvery("Manager", "Engineering");
+
 	}
 }

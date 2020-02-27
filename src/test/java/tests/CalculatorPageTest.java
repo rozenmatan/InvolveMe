@@ -9,7 +9,7 @@ import io.qameta.allure.SeverityLevel;
 import pageobjects.CalculatorPage;
 
 @Epic("Calculator page")
-public class CalculatorPageTest extends BaseTest{
+public class CalculatorPageTest extends BaseTest {
 
 	@Severity(SeverityLevel.NORMAL)
 	@Test
@@ -19,6 +19,7 @@ public class CalculatorPageTest extends BaseTest{
 		calculatorPage.clickOnTopMenuByValue("Templates");
 		calculatorPage.createPersonalLoanCalculator();
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createPersonalLoanCalculator")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")

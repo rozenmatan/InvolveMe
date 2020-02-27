@@ -8,10 +8,9 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pageobjects.PromotionPage;
 
-
 @Epic("Promotion page")
-public class PromotionPageTest extends BaseTest{
-	
+public class PromotionPageTest extends BaseTest {
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test
 	@Description("The method opens the templates page and create new form")
@@ -20,6 +19,7 @@ public class PromotionPageTest extends BaseTest{
 		promotionPage.clickOnTopMenuByValue("Templates");
 		promotionPage.createWinTripToSanFransisco();
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createWinTripToSanFransisco")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
@@ -27,6 +27,6 @@ public class PromotionPageTest extends BaseTest{
 		PromotionPage promotionPage = new PromotionPage(driver);
 		promotionPage.clickOnTopMenuByValue("Projects");
 		promotionPage.clickOnProjectListByValue("Win A Trip to San Francisco");
-		promotionPage.checkWinTripToSanFransisco("Matan","Rozen","rozenmatan1989@gmail.com");
+		promotionPage.checkWinTripToSanFransisco("Matan", "Rozen", "rozenmatan1989@gmail.com");
 	}
 }

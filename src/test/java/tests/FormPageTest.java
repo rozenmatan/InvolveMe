@@ -8,9 +8,8 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pageobjects.FormPage;
 
-
 @Epic("Form page")
-public class FormPageTest extends BaseTest{
+public class FormPageTest extends BaseTest {
 
 	@Severity(SeverityLevel.NORMAL)
 	@Test
@@ -20,6 +19,7 @@ public class FormPageTest extends BaseTest{
 		formPage.clickOnTopMenuByValue("Templates");
 		formPage.createContractForm();
 	}
+
 	@Severity(SeverityLevel.NORMAL)
 	@Test(dependsOnMethods = "createContractForm")
 	@Description("The method opens the page with all ready projects and clicks and checks on the relevant one")
@@ -27,6 +27,7 @@ public class FormPageTest extends BaseTest{
 		FormPage formPage = new FormPage(driver);
 		formPage.clickOnTopMenuByValue("ProjecTs");
 		formPage.clickOnProjectListByValue("Contact Form");
-		formPage.checkContractForm("Matan","rozenmatan1989@gmail.com","0544999379","Marketing","Advertising","Hello World");
+		formPage.checkContractForm("Matan", "rozenmatan1989@gmail.com", "0544999379", "Marketing", "Advertising",
+				"Hello World");
 	}
 }
