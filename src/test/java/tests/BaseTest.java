@@ -132,7 +132,7 @@ public abstract class BaseTest extends api.BastTest {
 			else
 				cap.setCapability("videoName", "deleteAllForms");
 			cap.setCapability("enableVideo", enableVideoFlag);
-			driver = new RemoteWebDriver(new URL("http://18.184.1.60:4444/wd/hub"), cap);
+			driver = new RemoteWebDriver(new URL("http://54.93.129.205:4444/wd/hub"), cap);
 		}
 	}
 
