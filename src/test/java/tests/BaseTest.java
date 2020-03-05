@@ -118,7 +118,7 @@ public abstract class BaseTest extends api.BastTest {
 			case "firefox":
 				cap = new DesiredCapabilities();
 				cap.setBrowserName("firefox");
-				cap.setVersion("71.0");
+				cap.setVersion("73.0");
 				break;
 			case "opera":
 				cap = new DesiredCapabilities();
@@ -132,7 +132,7 @@ public abstract class BaseTest extends api.BastTest {
 			else
 				cap.setCapability("videoName", "deleteAllForms");
 			cap.setCapability("enableVideo", enableVideoFlag);
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+			driver = new RemoteWebDriver(new URL("http://18.184.1.60:4444/wd/hub"), cap);
 		}
 	}
 
