@@ -94,37 +94,37 @@ public abstract class BaseTest extends api.BastTest {
 
 		if (env.equalsIgnoreCase("local")) {
 			switch (browser.toLowerCase()) {
-			case "chrome":
-				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
-				break;
-			case "firefox":
-				WebDriverManager.firefoxdriver().setup();
-				driver = new FirefoxDriver();
-				break;
-			case "opera":
-				WebDriverManager.operadriver().setup();
-				driver = new OperaDriver();
-				break;
+				case "chrome":
+					WebDriverManager.chromedriver().setup();
+					driver = new ChromeDriver();
+					break;
+				case "firefox":
+					WebDriverManager.firefoxdriver().setup();
+					driver = new FirefoxDriver();
+					break;
+				case "opera":
+					WebDriverManager.operadriver().setup();
+					driver = new OperaDriver();
+					break;
 			}
 		} else if (env.equalsIgnoreCase("docker")) {
 
 			switch (browser.toLowerCase()) {
-			case "chrome":
-				cap = new DesiredCapabilities();
-				cap.setBrowserName("chrome");
-				cap.setVersion("79.0");
-				break;
-			case "firefox":
-				cap = new DesiredCapabilities();
-				cap.setBrowserName("firefox");
-				cap.setVersion("73.0");
-				break;
-			case "opera":
-				cap = new DesiredCapabilities();
-				cap.setBrowserName("opera");
-				cap.setVersion("66.0");
-				break;
+				case "chrome":
+					cap = new DesiredCapabilities();
+					cap.setBrowserName("chrome");
+					cap.setVersion("79.0");
+					break;
+				case "firefox":
+					cap = new DesiredCapabilities();
+					cap.setBrowserName("firefox");
+					cap.setVersion("73.0");
+					break;
+				case "opera":
+					cap = new DesiredCapabilities();
+					cap.setBrowserName("opera");
+					cap.setVersion("66.0");
+					break;
 			}
 			cap.setCapability("enableVNC", true);
 			if (result != null)
@@ -132,7 +132,7 @@ public abstract class BaseTest extends api.BastTest {
 			else
 				cap.setCapability("videoName", "deleteAllForms");
 			cap.setCapability("enableVideo", enableVideoFlag);
-			driver = new RemoteWebDriver(new URL("http://18.184.1.60:4444/wd/hub"), cap);
+			driver = new RemoteWebDriver(new URL("http://18.184.119.67:4444/wd/hub/"), cap);
 		}
 	}
 
