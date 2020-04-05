@@ -287,6 +287,6 @@ public abstract class BasePage {
 	 * @desctiption writing to allure log
 	 */
 	protected void writeToLog(String str) {
-		AllureAttachment.addTextAttachment(str);
+		//AllureAttachment.addTextAttachment(str);
 	}
 }
