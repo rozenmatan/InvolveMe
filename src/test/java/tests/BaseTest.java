@@ -1,6 +1,6 @@
 package tests;
 
-import java.io.File;
+import java.io.File; 
 import java.net.MalformedURLException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -41,23 +41,27 @@ public abstract class BaseTest extends api.BastTest {
 	}
 
 	@Description("closes the page after the test is done")
-	@AfterMethod(dependsOnMethods = "onTestFailure")
+	@AfterMethod(dependsOnMethods = "failedTest")
 	public void afterMethod() {
 		driver.quit();
 	}
 
 	@Description("the method check the status of every test,is its failed it take a screen shot")
 	@AfterMethod
-	public void onTestFailure(ITestResult result) {
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File srcFile = ts.getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(srcFile, new File("./ScreenShots/" + result.getName() + ".jpg"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void failedTest(ITestResult result) {
+		if (result.getStatus() == ITestResult.FAILURE) {
+			
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File srcFile = ts.getScreenshotAs(OutputType.FILE);
+			try {
+				FileUtils.copyFile(srcFile, new File("./ScreenShots/" + result.getName() + ".jpg"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 
+			}
 		}
+
 	}
 
 	@Parameters({ "browser", "env", "video" })

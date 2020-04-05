@@ -4,8 +4,9 @@
 <listeners>
 	<listener class-name="utilities.ListenerClass"></listener>
 </listeners>
-  <test thread-count="1" name="Test" parallel="classes">
+  <test thread-count="5" name="Test" parallel="classes">
     <classes>
+      <class name="tests.LogInPageTest"/>	
       <class name="tests.PersonallityPageTest"/>
       <class name="tests.LogInPageTest"/>
       <class name="tests.CalculatorPageTest"/>
@@ -14,7 +15,7 @@
       <class name="tests.PromotionPageTest"/>
       <class name="tests.QuizPageTest"/>
       <class name="tests.SurveyPageTest"/> 
-      <class name="tests.FormPageTest"/> 
+      <class name="tests.FormPageTest"/>
     </classes>
   </test>  <!--Test -->
 </suite> <!-- Suite -->

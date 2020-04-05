@@ -38,7 +38,6 @@ public class QuizPage extends CommonElementAndFunctions {
 		click(useThisTemplate);
 		click(startEditing);
 		click(lastPageInEditablePageContainer);
-		// dragAndDropToElement(videoElementToDrag, elementToDropOn);
 		click(firstPublishButton);
 		click(secondPublishButton);
 		click(publishNowButton);
