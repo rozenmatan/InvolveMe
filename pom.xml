@@ -78,6 +78,7 @@
 	          		<browser>chrome</browser>
 	          		<env>local</env>
 	          		<video>false</video>
+	          		<ip>localhost</ip>
 	          </systemPropertyVariables>
    				<argLine>
 					-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

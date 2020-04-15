@@ -18,7 +18,8 @@ public class ChooseEnvironment {
 	private WebDriver driver;
 	private DesiredCapabilities cap;
 	
-	public ChooseEnvironment(String browser, String env, String video, ITestResult result) throws MalformedURLException {
+	public ChooseEnvironment(String browser, String env, String video, String ip, ITestResult result) throws MalformedURLException {
+		
 		if (env.equalsIgnoreCase("local")) {
 			
 			switch (browser.toLowerCase()) {
@@ -42,15 +43,15 @@ public class ChooseEnvironment {
 			switch (browser.toLowerCase()) {
 			case "chrome":
 				cap.setBrowserName("chrome");
-				cap.setVersion("79.0");
+				cap.setVersion("81.0");
 				break;
 			case "firefox":
 				cap.setBrowserName("firefox");
-				cap.setVersion("73.0");
+				cap.setVersion("75.0");
 				break;
 			case "opera":
 				cap.setBrowserName("opera");
-				cap.setVersion("66.0");
+				cap.setVersion("67.0");
 				break;
 			}
 			cap.setCapability("enableVNC", true);
@@ -59,7 +60,8 @@ public class ChooseEnvironment {
 			else
 				cap.setCapability("videoName", "deleteAllForms");
 			cap.setCapability("enableVideo", video.equalsIgnoreCase("true"));
-			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub/"), cap);
+			driver = new RemoteWebDriver(new URL("http://"+ip+":4444/wd/hub/"), cap);
+
 		}
 	}
 	
