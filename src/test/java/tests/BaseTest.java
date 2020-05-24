@@ -31,7 +31,7 @@ public abstract class BaseTest extends api.BastTest {
 	public void waitForEc2InstanceToBeUp(String ip) {
 		try {
 			if(!ip.equals("localhost")) {
-				TimeUnit.SECONDS.sleep(30);
+				TimeUnit.SECONDS.sleep(45);
 				System.out.println("In order to watch the Selenoid UI please go to URL: http://"+ip+":8081");
 			}
 		} catch (InterruptedException e) {
