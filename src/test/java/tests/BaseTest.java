@@ -55,7 +55,7 @@ public abstract class BaseTest extends api.BastTest {
 	@Description("the method calls for login procedure")
 	public void setupLogin() {
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("rozenmatan1989@gmail.com", "k6v5f3xx", "correctCredentials");
+		loginPage.login("rozenmatan1989@gmail.com", "12345678", "correctCredentials");
 	}
 
 	@Description("closes the page after the test is done")
