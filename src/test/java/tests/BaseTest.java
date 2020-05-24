@@ -25,6 +25,9 @@ import utilities.ChooseEnvironment;
 public abstract class BaseTest extends api.BastTest {
 
 	protected WebDriver driver;
+	private final String email = "rozenmatan1989@gmail.com";
+	private final String password = "12345678";
+	
 
 	@Parameters({"ip"})
 	@BeforeSuite
@@ -55,7 +58,7 @@ public abstract class BaseTest extends api.BastTest {
 	@Description("the method calls for login procedure")
 	public void setupLogin() {
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("rozenmatan1989@gmail.com", "12345678", "correctCredentials");
+		loginPage.login(email, password, "correctCredentials");
 	}
 
 	@Description("closes the page after the test is done")
@@ -92,7 +95,7 @@ public abstract class BaseTest extends api.BastTest {
 		driver.manage().window().maximize();
 		driver.get("https://app.involve.me");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.login("rozenmatan1989@gmail.com", "k6v5f3xx", "correctCredentials");
+		loginPage.login(email, password, "correctCredentials");
 		deleteAllFromsPage deleteAllFromsPage = new deleteAllFromsPage(driver);
 		deleteAllFromsPage.clickOnTopMenuByValue("Projects");
 		deleteAllFromsPage.deleteAllFroms();
